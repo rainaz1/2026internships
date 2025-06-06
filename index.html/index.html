@@ -7,35 +7,39 @@
 \pard\pardeftab720\partightenfactor0
 
 \f0\fs24 \cf0 \expnd0\expndtw0\kerning0
-<!DOCTYPE html>\
-<html lang="en">\
-<head>\
-  <meta charset="UTF-8" />\
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
-  <title>InternHunt 2026</title>\
-  <meta name="description" content="Find 2026 summer internships easily. Filter by location, pay, and remote options.">\
-  <link rel="stylesheet" href="styles.css" />\
-</head>\
-<body>\
-  <h1>InternHunt 2026</h1>\
-\
-  <div id="filters">\
-    <input type="text" id="search-location" placeholder="Enter location..." />\
-    <select id="filter-paid">\
-      <option value="">Paid or Unpaid?</option>\
-      <option value="true">Paid</option>\
-      <option value="false">Unpaid</option>\
-    </select>\
-    <select id="filter-remote">\
-      <option value="">Remote or In-person?</option>\
-      <option value="true">Remote</option>\
-      <option value="false">In-person</option>\
-    </select>\
-    <button onclick="filterInternships()">Search</button>\
-  </div>\
-\
-  <div id="internship-list"></div>\
-\
-  <script src="script.js"></script>\
-</body>\
-</html>}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InternHunt 2026</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>InternHunt 2026</h1>
+    <p>Find summer internships by location, type, and more!</p>
+
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search by keyword..." />
+      <select id="locationFilter">
+        <option value="">All Locations</option>
+        <option value="New York">New York</option>
+        <option value="Remote">Remote</option>
+        <option value="California">California</option>
+      </select>
+      <select id="paidFilter">
+        <option value="">Paid & Unpaid</option>
+        <option value="Paid">Paid</option>
+        <option value="Unpaid">Unpaid</option>
+      </select>
+    </div>
+
+    <div id="internshipList" class="listings">
+      <!-- internships will be loaded here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
