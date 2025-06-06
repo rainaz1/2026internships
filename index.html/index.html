@@ -4,151 +4,120 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inturn</title>
-  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
-      background-color: #fef6f9; /* super light pink */
       font-family: Arial, sans-serif;
-      color: #222;
+      background-color: #fff6f6;
+      color: #333;
       margin: 0;
       padding: 0;
     }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
+    .header {
       display: flex;
       align-items: center;
-      gap: 10px;
+      padding: 20px;
+      background-color: #fff6f6;
+      border-bottom: 1px solid #ddd;
     }
-    .logo {
-      width: 24px;
-      height: 24px;
-      display: inline-block;
+    .header h1 {
+      font-size: 2rem;
+      margin: 0 10px;
+    }
+    .header img {
+      width: 30px;
+      height: 30px;
     }
     .filters {
       display: flex;
       gap: 10px;
-      flex-wrap: wrap;
-      margin: 20px 0;
+      padding: 10px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
     }
-    select, input {
-      padding: 8px;
+    .filters input,
+    .filters select {
+      padding: 5px;
       font-size: 1rem;
-      flex: 1;
-      min-width: 180px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    .listings {
+      padding: 20px;
     }
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
+    .company {
+      margin-top: 30px;
     }
-    th {
-      background-color: #f9e9f0;
+    .company h2 {
       color: #444;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .internship {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #ccc;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1><span class="logo">➡️</span> Inturn</h1>
-    <p>Refine by location, date, or major/sector to find your perfect 2026 internship.</p>
-
-    <div class="filters">
-      <input type="text" id="search" placeholder="Search title or sector...">
-      <select id="locationFilter">
-        <option value="">All Locations</option>
-        <option value="United States">United States</option>
-        <option value="Shanghai">Shanghai</option>
-        <option value="Shenzhen">Shenzhen</option>
-        <option value="Minato">Minato</option>
-        <option value="Cupertino">Cupertino</option>
-        <option value="Austin">Austin</option>
-        <option value="Linz">Linz</option>
-      </select>
-      <select id="sectorFilter">
-        <option value="">All Majors/Sectors</option>
-        <option value="Engineering">Engineering</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Finance">Finance</option>
-        <option value="AI">AI</option>
-        <option value="Legal">Legal</option>
-        <option value="Sales">Sales</option>
-        <option value="Security">Security</option>
-      </select>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Internship</th>
-          <th>Date</th>
-          <th>Location</th>
-        </tr>
-      </thead>
-      <tbody id="internshipTable">
-        <!-- Internship rows inserted here by script -->
-      </tbody>
-    </table>
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Arrow_east.svg/2048px-Arrow_east.svg.png" alt="arrow" />
+    <h1>Inturn</h1>
   </div>
-
-  <script>
-    const internships = [
-      { title: "Sales Internship Winter 2025", date: "Jun 04, 2025", location: "Minato" },
-      { title: "Cellular RF Systems Engineering Intern – Phase Lock Loop", date: "Jun 03, 2025", location: "Linz" },
-      { title: "Legal and Global Security Internships", date: "May 30, 2025", location: "United States" },
-      { title: "Subject Matter Expert - Automation, Intern", date: "May 28, 2025", location: "Shenzhen" },
-      { title: "Product Design, Mechanical Engineering and Materials Internships", date: "May 28, 2025", location: "United States" },
-      { title: "Hardware Technology Internships", date: "May 28, 2025", location: "United States" },
-      { title: "Engineering Program Management Internships", date: "May 28, 2025", location: "United States" },
-      { title: "Software Engineering Internships", date: "May 28, 2025", location: "United States" },
-      { title: "Business, Marketing, and G&A Internships", date: "May 28, 2025", location: "United States" },
-      { title: "Machine Learning / AI Internships", date: "May 28, 2025", location: "United States" },
-      { title: "Operations, Manufacturing Design Internships", date: "May 28, 2025", location: "United States" },
-      { title: "Hardware Engineering Internships", date: "May 28, 2025", location: "United States" },
-      { title: "MBA Internships - Summer 2026", date: "May 28, 2025", location: "United States" },
-      { title: "Intern Opportunities at Apple (International Students)", date: "May 12, 2025", location: "Shanghai" },
-      { title: "Intern Opportunities at Apple (General)", date: "Apr 03, 2025", location: "Shanghai" },
-      { title: "Finance Development Program - Austin", date: "Apr 02, 2025", location: "Austin" },
-      { title: "Finance Development Program - Cupertino", date: "Apr 01, 2025", location: "Cupertino" },
-      { title: "Launch@Apple, Finance Development Experience", date: "Mar 30, 2025", location: "Cupertino" },
-      { title: "Subject Matter Expert - PVD, Intern", date: "Mar 25, 2025", location: "Shenzhen" },
-      { title: "Data Analyst Internship - Japan Sales Finance", date: "Feb 05, 2025", location: "Minato" }
-    ];
-
-    const table = document.getElementById("internshipTable");
-    const search = document.getElementById("search");
-    const locationFilter = document.getElementById("locationFilter");
-    const sectorFilter = document.getElementById("sectorFilter");
-
-    function renderTable() {
-      const searchVal = search.value.toLowerCase();
-      const locVal = locationFilter.value;
-      const secVal = sectorFilter.value;
-
-      table.innerHTML = "";
-      internships.forEach(item => {
-        if ((item.title.toLowerCase().includes(searchVal)) &&
-            (!locVal || item.location === locVal) &&
-            (!secVal || item.title.toLowerCase().includes(secVal.toLowerCase()))) {
-          const row = `<tr><td>${item.title}</td><td>${item.date}</td><td>${item.location}</td></tr>`;
-          table.innerHTML += row;
-        }
-      });
-    }
-
-    search.addEventListener("input", renderTable);
-    locationFilter.addEventListener("change", renderTable);
-    sectorFilter.addEventListener("change", renderTable);
-
-    renderTable();
-  </script>
+  <div class="filters">
+    <input type="text" placeholder="Search by keyword...">
+    <select>
+      <option>Location</option>
+      <option>New York</option>
+      <option>Remote</option>
+      <option>California</option>
+    </select>
+    <select>
+      <option>Listing Date</option>
+      <option>Newest</option>
+      <option>Oldest</option>
+    </select>
+    <select>
+      <option>Sector / Major</option>
+      <option>Engineering</option>
+      <option>Finance</option>
+      <option>Marketing</option>
+    </select>
+  </div>
+  <div class="listings">
+    <div class="company">
+      <h2>Apple - Summer 2026 Internships</h2>
+      <div class="internship">MBA Internships - Summer 2026 – May 28, 2025 – Various US Locations</div>
+      <div class="internship">Intern Opportunities at Apple (General) - October 2025 to September 2026 – Apr 03, 2025 – Shanghai</div>
+      <div class="internship">Finance Development Program - 2026 Internship Opportunities – Apr 02, 2025 – Austin</div>
+      <div class="internship">Finance Development Program - 2026 Internship Opportunities – Apr 01, 2025 – Cupertino</div>
+    </div>
+    <div class="company">
+      <h2>Google - Summer 2025 Internships</h2>
+      <div class="internship">Student Researcher, PhD – Mountain View, CA & more – 2025</div>
+      <div class="internship">Student Researcher, BS/MS – Waterloo, Canada & more – 2025</div>
+      <div class="internship">Student Researcher – Sydney, Australia – 2025</div>
+    </div>
+    <div class="company">
+      <h2>TransMarket Group</h2>
+      <div class="internship">Algorithmic Trader Intern – Chicago, IL – Jun 05</div>
+      <div class="internship">Quantitative Trader Intern – Chicago, IL – Jun 05</div>
+      <div class="internship">DevOps/SRE Intern – Chicago, IL – Jun 05</div>
+      <div class="internship">Systems Engineer Intern – Chicago, IL – Jun 05</div>
+    </div>
+    <div class="company">
+      <h2>N1</h2>
+      <div class="internship">Software Engineer Intern (Fullstack) – New York – Jun 05</div>
+      <div class="internship">Software Engineer Intern (Backend, Rust) – New York – Jun 05</div>
+    </div>
+    <div class="company">
+      <h2>Point72</h2>
+      <div class="internship">Quantitative Research Intern (NLP) – New York, NY – Jun 01</div>
+      <div class="internship">Quantitative Developer Intern – New York, NY – May 24</div>
+    </div>
+    <div class="company">
+      <h2>Aquatic Capital Management</h2>
+      <div class="internship">Software Engineer Intern – Chicago, IL – May 24</div>
+      <div class="internship">Quantitative Researcher Intern – Chicago, IL – May 08</div>
+    </div>
+  </div>
 </body>
 </html>
