@@ -2,117 +2,195 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inturn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inturn Internship Listings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Garet:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to bottom right, #f9f7f1, #f4f1eb);
-      color: #333;
-      margin: 0;
-      padding: 0;
+    /* Basic resets */
+    * {
+      box-sizing: border-box;
     }
-    .header {
+    body {
+      margin: 0;
+      font-family: 'Garet', sans-serif;
+      background: linear-gradient(135deg, #f9f7f1, #f4f1eb);
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    header {
       display: flex;
       align-items: center;
-      padding: 20px;
-      background-color: #f9f7f1;
+      padding: 2rem 0 1rem;
       border-bottom: 1px solid #ddd;
     }
-    .header h1 {
-      font-size: 2rem;
-      margin: 0 10px;
+    header img {
+      width: 24px;
+      height: 24px;
+      margin-right: 1rem;
+      filter: invert(35%) sepia(17%) saturate(641%) hue-rotate(182deg) brightness(92%) contrast(88%);
     }
-    .header img {
-      width: 30px;
-      height: 30px;
+    header h1 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin: 0;
+      color: #1a1a1a;
     }
+
+    .disclaimer {
+      background-color: #fff8e1;
+      border-left: 5px solid #ffb74d;
+      margin: 1.5rem 0;
+      padding: 0.75rem 1rem;
+      font-style: italic;
+      color: #8d6e63;
+      font-weight: 500;
+    }
+
     .filters {
       display: flex;
-      gap: 10px;
-      padding: 10px;
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
     }
-    .filters input,
+    .filters input[type="text"],
     .filters select {
-      padding: 5px;
+      flex-grow: 1;
+      min-width: 180px;
+      padding: 0.5rem 1rem;
       font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: border-color 0.3s ease;
     }
-    .disclaimer {
-      padding: 10px 20px;
-      background-color: #fff8e1;
-      color: #8d6e63;
-      font-style: italic;
-      border-bottom: 1px solid #e0cfc1;
+    .filters input[type="text"]:focus,
+    .filters select:focus {
+      outline: none;
+      border-color: #0073e6;
+      box-shadow: 0 0 5px rgba(0,115,230,0.3);
     }
-    .listings {
-      padding: 20px;
+
+    .internship-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      gap: 1.5rem;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 30px;
+    .internship-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.07);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    th, td {
-      text-align: left;
-      padding: 8px;
-      border-bottom: 1px solid #ccc;
+    .internship-card:hover {
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+      transform: translateY(-4px);
     }
-    th {
-      background-color: #f0ece6;
-    }
-    a {
+    .internship-card h3 {
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+      font-size: 1.25rem;
       color: #0073e6;
-      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s ease;
     }
+    .internship-card h3:hover {
+      color: #004a99;
+    }
+    .internship-card .company {
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 0.6rem;
+    }
+    .internship-card .location,
+    .internship-card .date {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 0.4rem;
+    }
+    .internship-card a.apply-link {
+      margin-top: auto;
+      padding: 0.5rem 1rem;
+      background-color: #0073e6;
+      color: #fff;
+      text-align: center;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .internship-card a.apply-link:hover {
+      background-color: #004a99;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .filters {
+        flex-direction: column;
+      }
+      .filters input[type="text"],
+      .filters select {
+        width: 100%;
+      }
+    }
+
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="header">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/OOjs_UI_icon_arrow-next-ltr.svg" alt="arrow" />
-    <h1>Inturn</h1>
-  </div>
-  <div class="filters">
-    <input type="text" id="searchInput" placeholder="Search by keyword...">
-    <select id="locationFilter">
-      <option value="">Location</option>
-      <option value="New York">New York</option>
-      <option value="Remote">Remote</option>
-      <option value="California">California</option>
-    </select>
-    <select id="dateFilter">
-      <option value="">Listing Date</option>
-      <option value="Newest">Newest</option>
-      <option value="Oldest">Oldest</option>
-    </select>
-    <select id="sectorFilter">
-      <option value="">Sector / Major</option>
-      <option value="Engineering">Engineering</option>
-      <option value="Finance">Finance</option>
-      <option value="Marketing">Marketing</option>
-    </select>
-  </div>
-  <div class="disclaimer">
-    Note: All internships listed are U.S.-based opportunities only.
-  </div>
-  <div class="listings">
-    <h2>Internship Listings</h2>
-    <table id="internshipTable">
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Position Title</th>
-          <th>Location</th>
-          <th>Listing Date</th>
-          <th>Listing Link</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody">
-        <!-- Content to be dynamically populated -->
-      </tbody>
-    </table>
+  <div class="container">
+    <header>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/OOjs_UI_icon_arrow-next-ltr.svg" alt="arrow icon" />
+      <h1>Inturn Internships</h1>
+    </header>
+
+    <div class="disclaimer">
+      Note: All internships listed are U.S.-based opportunities only.
+    </div>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search by keyword or company..." />
+      <select id="locationFilter">
+        <option value="">All Locations</option>
+        <option value="New York">New York</option>
+        <option value="Remote">Remote</option>
+        <option value="California">California</option>
+        <option value="Chicago">Chicago</option>
+        <option value="San Francisco">San Francisco</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Houston">Houston</option>
+        <option value="Miami">Miami</option>
+      </select>
+      <select id="sectorFilter">
+        <option value="">All Sectors</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Finance">Finance</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Research">Research</option>
+      </select>
+      <select id="dateFilter">
+        <option value="">Sort by Listing Date</option>
+        <option value="Newest">Newest First</option>
+        <option value="Oldest">Oldest First</option>
+      </select>
+    </div>
+
+    <div class="internship-list" id="internshipList">
+      <!-- Internship cards injected here -->
+    </div>
   </div>
 
   <script>
@@ -122,72 +200,89 @@
         title: "Business, Marketing, and G&A Internships",
         location: "Unknown",
         date: "2025-06-01",
-        link: "https://jobs.apple.com/en-us/details/200579319/data-analyst-internship-japan-sales-finance?team=STDNT"
+        link: "https://jobs.apple.com/en-us/details/200579319/data-analyst-internship-japan-sales-finance?team=STDNT",
+        sector: "Marketing"
       },
       {
         company: "JPMorganChase",
         title: "Corporate Banking Summer Analyst",
         location: "Various",
         date: "2025-05-20",
-        link: "https://careers.jpmorgan.com/global/en/students/programs/corporate-banking-summer-analyst"
+        link: "https://careers.jpmorgan.com/global/en/students/programs/corporate-banking-summer-analyst",
+        sector: "Finance"
       },
       {
         company: "Microsoft",
         title: "Teams CMD Labs Research Intern",
         location: "Various",
         date: "2025-05-10",
-        link: "https://jobs.careers.microsoft.com/global/en/job/1817947/Research-Intern---Microsoft-Teams-CMD-Labs"
+        link: "https://jobs.careers.microsoft.com/global/en/job/1817947/Research-Intern---Microsoft-Teams-CMD-Labs",
+        sector: "Research"
       },
       {
         company: "Goldman Sachs",
         title: "Asset Management, Client Solutions Group | Summer Analyst",
         location: "New York",
         date: "2025-06-05",
-        link: "https://higher.gs.com/campus?&page=1&sort=RELEVANCE"
+        link: "https://higher.gs.com/campus?&page=1&sort=RELEVANCE",
+        sector: "Finance"
       },
       {
         company: "American Express",
         title: "MBA Internship",
         location: "Various",
         date: "2025-05-15",
-        link: "https://www.americanexpress.com/en-us/careers/student-programs/global-students-page.html"
+        link: "https://www.americanexpress.com/en-us/careers/student-programs/global-students-page.html",
+        sector: "Finance"
       },
       {
         company: "IBM",
         title: "All Internships (None Currently in US)",
         location: "Various",
         date: "2025-04-30",
-        link: "https://www.ibm.com/careers/search?field_keyword_18%5B0%5D=Internship"
+        link: "https://www.ibm.com/careers/search?field_keyword_18%5B0%5D=Internship",
+        sector: "Technology"
       }
     ];
 
-    function populateTable(data) {
-      const tbody = document.getElementById("tableBody");
-      tbody.innerHTML = "";
+    const container = document.getElementById("internshipList");
+    const searchInput = document.getElementById("searchInput");
+    const locationFilter = document.getElementById("locationFilter");
+    const sectorFilter = document.getElementById("sectorFilter");
+    const dateFilter = document.getElementById("dateFilter");
+
+    function renderInternships(data) {
+      container.innerHTML = "";
+      if (data.length === 0) {
+        container.innerHTML = `<p style="font-style: italic; color: #666;">No internships found matching your criteria.</p>`;
+        return;
+      }
       data.forEach(intern => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${intern.company}</td>
-          <td>${intern.title}</td>
-          <td>${intern.location}</td>
-          <td>${intern.date}</td>
-          <td><a href="${intern.link}" target="_blank">Link</a></td>
+        const card = document.createElement("div");
+        card.classList.add("internship-card");
+        card.innerHTML = `
+          <h3><a href="${intern.link}" target="_blank" rel="noopener">${intern.title}</a></h3>
+          <div class="company">${intern.company}</div>
+          <div class="location"><strong>Location:</strong> ${intern.location}</div>
+          <div class="date"><strong>Listing Date:</strong> ${new Date(intern.date).toLocaleDateString()}</div>
+          <a class="apply-link" href="${intern.link}" target="_blank" rel="noopener">Apply Now</a>
         `;
-        tbody.appendChild(row);
+        container.appendChild(card);
       });
     }
 
-    function filterTable() {
-      const keyword = document.getElementById("searchInput").value.toLowerCase();
-      const location = document.getElementById("locationFilter").value.toLowerCase();
-      const sector = document.getElementById("sectorFilter").value.toLowerCase();
-      const dateOrder = document.getElementById("dateFilter").value;
+    function filterInternships() {
+      const keyword = searchInput.value.toLowerCase();
+      const location = locationFilter.value.toLowerCase();
+      const sector = sectorFilter.value.toLowerCase();
+      const dateOrder = dateFilter.value;
 
-      let filtered = internships.filter(i =>
-        (i.title.toLowerCase().includes(keyword) || i.company.toLowerCase().includes(keyword)) &&
-        (!location || i.location.toLowerCase().includes(location)) &&
-        (!sector || i.title.toLowerCase().includes(sector))
-      );
+      let filtered = internships.filter(i => {
+        const matchesKeyword = i.title.toLowerCase().includes(keyword) || i.company.toLowerCase().includes(keyword);
+        const matchesLocation = !location || i.location.toLowerCase().includes(location);
+        const matchesSector = !sector || i.sector.toLowerCase().includes(sector);
+        return matchesKeyword && matchesLocation && matchesSector;
+      });
 
       if (dateOrder === "Newest") {
         filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -195,15 +290,16 @@
         filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
       }
 
-      populateTable(filtered);
+      renderInternships(filtered);
     }
 
-    document.getElementById("searchInput").addEventListener("input", filterTable);
-    document.getElementById("locationFilter").addEventListener("change", filterTable);
-    document.getElementById("sectorFilter").addEventListener("change", filterTable);
-    document.getElementById("dateFilter").addEventListener("change", filterTable);
+    searchInput.addEventListener("input", filterInternships);
+    locationFilter.addEventListener("change", filterInternships);
+    sectorFilter.addEventListener("change", filterInternships);
+    dateFilter.addEventListener("change", filterInternships);
 
-    populateTable(internships);
+    // Initial render
+    renderInternships(internships);
   </script>
 </body>
 </html>
