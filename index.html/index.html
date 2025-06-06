@@ -196,6 +196,7 @@
         <option value="Finance">Finance</option>
         <option value="Marketing">Marketing</option>
         <option value="Research">Research</option>
+        <option value="Law">Research</option>
       </select>
       <select id="dateFilter">
         <option value="">Sort by Listing Date</option>
@@ -213,52 +214,68 @@
     const internships = [
       {
         company: "Apple",
-        title: "Business, Marketing, and G&A Internships",
-        location: "Unknown",
-        date: "2025-06-01",
-        link: "https://jobs.apple.com/en-us/details/200579319/data-analyst-internship-japan-sales-finance?team=STDNT",
-        sector: "Marketing"
+        title: "Legal and Global Security Internships",
+        location: "United States",
+        date: "2025-05-30",
+        link: "https://jobs.apple.com/en-us/details/200607234/legal-and-global-security-internships?team=STDNT",
+        sector: "Law"
+      },
+      {
+        company: "Apple",
+        title: "Product Design, Mechanical Engineering and Materials Internships",
+        location: "United States",
+        date: "2025-05-28",
+        link: "https://jobs.apple.com/en-us/details/200606146/product-design-mechanical-engineering-and-materials-internships?team=STDNT",
+        sector: "Engineering"
+      },
+      {
+        company: "Apple",
+        title: "Software Engineering Internships",
+        location: "United States",
+        date: "2025-05-28",
+        link: "https://jobs.apple.com/en-us/details/200606145/software-engineering-internships?team=STDNT",
+        sector: "Engineering"
       },
       {
         company: "JPMorganChase",
-        title: "Corporate Banking Summer Analyst",
-        location: "Various",
-        date: "2025-05-20",
-        link: "https://careers.jpmorgan.com/global/en/students/programs/corporate-banking-summer-analyst",
+        title: "2026 Commercial & Investment Bank Global Corporate Banking Summer Analyst Program",
+        location: "New York, Atlanta, Chicago, Houston, Los Angeles, San Francisco",
+        date: "Deadline: 2025-06-30",
+        link: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210588321",
         sector: "Finance"
       },
       {
         company: "Microsoft",
-        title: "Teams CMD Labs Research Intern",
-        location: "Various",
-        date: "2025-05-10",
+        title: "Research Intern - Microsoft Teams CMD Labs",
+        location: "Redmond, Washington",
+        date: "2025-04-03",
         link: "https://jobs.careers.microsoft.com/global/en/job/1817947/Research-Intern---Microsoft-Teams-CMD-Labs",
         sector: "Research"
       },
       {
         company: "Goldman Sachs",
         title: "Asset Management, Client Solutions Group | Summer Analyst",
-        location: "New York",
-        date: "2025-06-05",
-        link: "https://higher.gs.com/campus?&page=1&sort=RELEVANCE",
+        location: "New York, New York",
+        date: "N/A",
+        link: "https://higher.gs.com/roles/138740",
         sector: "Finance"
       },
       {
         company: "American Express",
-        title: "MBA Internship",
-        location: "Various",
-        date: "2025-05-15",
+        title: "Undergraduate Internship",
+        location: "New York, " + "Phoenix, " + "Florida, " + "Salt Lake City, " + "Atlanta, " + "Palo Alto, CA " + "& Washington, DC",
+        date: "N/A",
         link: "https://www.americanexpress.com/en-us/careers/student-programs/global-students-page.html",
         sector: "Finance"
       },
       {
-        company: "IBM",
-        title: "All Internships (None Currently in US)",
-        location: "Various",
-        date: "2025-04-30",
-        link: "https://www.ibm.com/careers/search?field_keyword_18%5B0%5D=Internship",
-        sector: "Technology"
-      }
+        company: "American Express",
+        title: "Sophomore Finance Internship",
+        location: "New York, " + "Phoenix, " + "Florida, " + "Salt Lake City, " + "Atlanta, " + "Palo Alto, CA " + "& Washington, DC",
+        date: "N/A",
+        link: "https://www.americanexpress.com/en-us/careers/student-programs/global-students-page.html",
+        sector: "Finance"
+      },
     ];
 
     const container = document.getElementById("internshipList");
