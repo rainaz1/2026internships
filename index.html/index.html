@@ -39,23 +39,30 @@
       padding: 5px;
       font-size: 1rem;
     }
+    .disclaimer {
+      padding: 10px 20px;
+      background-color: #fff8e1;
+      color: #8d6e63;
+      font-style: italic;
+      border-bottom: 1px solid #e0cfc1;
+    }
     .listings {
       padding: 20px;
     }
-    .company {
-      margin-top: 30px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
     }
-    .company h2 {
-      color: #222;
+    th, td {
+      text-align: left;
+      padding: 8px;
       border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
     }
-    .internship {
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px dashed #ccc;
+    th {
+      background-color: #f0ece6;
     }
-    .internship a {
+    a {
       color: #0073e6;
       text-decoration: none;
     }
@@ -87,15 +94,53 @@
       <option>Marketing</option>
     </select>
   </div>
+  <div class="disclaimer">
+    Note: All internships listed are U.S.-based opportunities only.
+  </div>
   <div class="listings">
-    <div class="company">
-      <h2>Apple - Internship Listings</h2>
-      <div class="internship"><a href="https://jobs.apple.com/en-us/details/200607853/sales-internship-winter-2025?team=STDNT">Sales Internship - Winter 2025</a></div>
-      <div class="internship"><a href="https://jobs.apple.com/en-us/details/200607234/legal-and-global-security-internships?team=STDNT">Legal and Global Security Internships</a></div>
-      <div class="internship"><a href="https://jobs.apple.com/en-us/details/200606146/product-design-mechanical-engineering-and-materials-internships?team=STDNT">Product Design, Mechanical Engineering, and Materials Internships</a></div>
-      <div class="internship"><a href="https://jobs.apple.com/en-us/details/200525888/finance-development-program-2026-internship-opportunities">Finance Development Program - 2026 Internship Opportunities</a></div>
-      <div class="internship"><a href="https://jobs.apple.com/en-us/search?team=internships-STDNT-INTRN">View All Apple Internships</a></div>
-    </div>
+    <h2>Apple - Internship Listings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Position Title</th>
+          <th>Location</th>
+          <th>Listing Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Apple</td>
+          <td>Sales Internship - Winter 2025</td>
+          <td>Unknown</td>
+          <td><a href="https://jobs.apple.com/en-us/details/200607853/sales-internship-winter-2025?team=STDNT" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>Legal and Global Security Internships</td>
+          <td>Unknown</td>
+          <td><a href="https://jobs.apple.com/en-us/details/200607234/legal-and-global-security-internships?team=STDNT" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>Product Design, Mechanical Engineering, and Materials Internships</td>
+          <td>Unknown</td>
+          <td><a href="https://jobs.apple.com/en-us/details/200606146/product-design-mechanical-engineering-and-materials-internships?team=STDNT" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>Finance Development Program - 2026 Internship Opportunities</td>
+          <td>Unknown</td>
+          <td><a href="https://jobs.apple.com/en-us/details/200525888/finance-development-program-2026-internship-opportunities" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>View All Apple Internships</td>
+          <td>Various</td>
+          <td><a href="https://jobs.apple.com/en-us/search?team=internships-STDNT-INTRN" target="_blank">Link</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </body>
 </html>
